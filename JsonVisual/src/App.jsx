@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
-
+import convertToRawNodeDatum from './rawtoformat.tsx'
+import Tree from 'react-d3-tree';
 
 class App extends Component{
   constructor(props) {
@@ -9,18 +10,25 @@ class App extends Component{
       fileName: '',
       fileContent: ''
     };
+    
   }
+
   
   handleFileChange = e => {
     const file = e.target.files[0];
     const reader = new FileReader();
-    reader.readAsText(file);
+    reader.readAsText(file, "UTF-8");
     reader.onload = () => {
-      this.setState({fileName: file.name, fileContent: reader.result});
-      console.log(reader.result);
+      this.setState({fileName: file.name, fileContent: JSON.parse(reader.result)});
+      
+      
+      const data3 = convertToRawNodeDatum(JSON.parse(reader.result));
+      console.log(data3)
+
+
     }
     reader.onerror = () => {
-      console.log("File eror!", reader.error);
+      console.log("File error!", reader.error);
     }
 
   }
@@ -29,12 +37,8 @@ class App extends Component{
       <div>
         <h1> File Reader</h1>
         <input type='file'onChange={this.handleFileChange}></input>
+        
         <br/>
-        {/* <p> {this.state.fileName} </p>
-        <p> {this.state.fileContent}</p> */}
-
-
-
 
       </div>
     )
