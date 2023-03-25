@@ -7,8 +7,8 @@ class App extends Component{
   constructor(props) {
     super(props);
     this.state = {
-      fileName: '',
-      fileContent: ''
+
+      fileContent: [{ id: '0', label: 'Root' }] 
     };
     
   }
@@ -19,11 +19,11 @@ class App extends Component{
     const reader = new FileReader();
     reader.readAsText(file, "UTF-8");
     reader.onload = () => {
-      this.setState({fileName: file.name, fileContent: JSON.parse(reader.result)});
+      this.setState({fileContent: convertToRawNodeDatum(JSON.parse(reader.result))});
       
       
-      const data3 = convertToRawNodeDatum(JSON.parse(reader.result));
-      console.log(data3)
+      //const data3 = convertToRawNodeDatum(JSON.parse(reader.result));
+     // console.log(data3)
 
 
     }
@@ -34,10 +34,10 @@ class App extends Component{
   }
   render() {
     return (
-      <div>
+      <div  style={{ width: '100em', height: '50em' }}>
         <h1> File Reader</h1>
         <input type='file'onChange={this.handleFileChange}></input>
-        
+        <Tree data={this.state.fileContent}/>
         <br/>
 
       </div>
@@ -46,17 +46,3 @@ class App extends Component{
 }
 
 export default App
-
-
-
-
-
-
-
-
-
-
-
-
-
-

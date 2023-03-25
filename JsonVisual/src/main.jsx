@@ -8,7 +8,7 @@ import OrgChartTree from './treemaker'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <OrgChartTree/>
+    
     <App/>
   </React.StrictMode>,
 )
