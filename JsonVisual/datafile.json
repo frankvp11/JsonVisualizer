@@ -1,69 +1,26 @@
-{
-  "name": "CEO",
-  "children": [
-    {
-      "name": "Manager",
-      "attributes": {
-        "Department": "Production",
-        "isFullTime": true,
-        "weeklyHours": 80
-      },
-      "children": [
-        {
-          "name": "Foreman",
-          "attributes": {
-            "Department": "Fabrication"
-          },
-          "children": [
-            {
-              "name": "Workers"
-            }
-          ]
-        },
-        {
-          "name": "Foreman",
-          "attributes": {
-            "Department": "Assembly"
-          },
-          "children": [
-            {
-              "name": "Workers"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "name": "Manager",
-      "attributes": {
-        "Department": "Marketing",
-        "isFullTime": true,
-        "weeklyHours": 80
-      },
-      "children": [
-        {
-          "name": "Sales Officer",
-          "attributes": {
-            "Department": "A"
-          },
-          "children": [
-            {
-              "name": "Salespeople"
-            }
-          ]
-        },
-        {
-          "name": "Sales Officer",
-          "attributes": {
-            "Department": "B"
-          },
-          "children": [
-            {
-              "name": "Salespeople"
-            }
-          ]
-        }
-      ]
-    }
-  ]
-}
+{"widget": {
+  "debug": "on",
+  "window": {
+      "title": "Sample Konfabulator Widget",
+      "name": "main_window",
+      "width": 500,
+      "height": 500
+  },
+  "image": { 
+      "src": "Images/Sun.png",
+      "name": "sun1",
+      "hOffset": 250,
+      "vOffset": 250,
+      "alignment": "center"
+  },
+  "text": {
+      "data": "Click Here",
+      "size": 36,
+      "style": "bold",
+      "name": "text1",
+      "hOffset": 250,
+      "vOffset": 100,
+      "alignment": "center",
+      "onMouseUp": "sun1.opacity = (sun1.opacity / 100) * 90;"
+  }
+}}    

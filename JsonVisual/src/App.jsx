@@ -15,16 +15,19 @@ class App extends Component{
 
   
   handleFileChange = e => {
+    e.preventDefault();
     const file = e.target.files[0];
     const reader = new FileReader();
     reader.readAsText(file, "UTF-8");
     reader.onload = () => {
-      this.setState({fileContent: convertToRawNodeDatum(JSON.parse(reader.result))});
-      
-      
+      this.setState({fileContent: convertToRawNodeDatum(JSON.parse(reader.result))}); // convertToRawNodeDatum
+      //this.state.fileContent = (JSON.parse(reader.result));
+      //this.setState()
+      console.log(this.state.fileContent);
       //const data3 = convertToRawNodeDatum(JSON.parse(reader.result));
      // console.log(data3)
-
+      render();
+        
 
     }
     reader.onerror = () => {
@@ -37,7 +40,7 @@ class App extends Component{
       <div  style={{ width: '100em', height: '50em' }}>
         <h1> File Reader</h1>
         <input type='file'onChange={this.handleFileChange}></input>
-        <Tree data={this.state.fileContent}/>
+        <Tree class='hi' data={this.state.fileContent}/>
         <br/>
 
       </div>
